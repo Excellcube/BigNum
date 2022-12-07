@@ -7,6 +7,7 @@ namespace Excellcube
     public struct BigInt
     {
         private BigInteger m_Value;
+        public  BigInteger value => m_Value;
 
         public BigInt(int value)
         {
