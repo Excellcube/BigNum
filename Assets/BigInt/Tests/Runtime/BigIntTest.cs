@@ -147,10 +147,10 @@ public class BigIntTest
         num = "1020023456789";
         numStr = num.ToShortForm("en");
         Assert.AreEqual(numStr, "1.020t");
-        
+
         BigInt num2 = "876543212345678987654321";
         string num2Str = num2.ToShortForm("en");
-        Assert.AreEqual(num2Str, "876.543s");
+        Assert.AreEqual(num2Str, "876.543ac");
     }
 
     [Test]

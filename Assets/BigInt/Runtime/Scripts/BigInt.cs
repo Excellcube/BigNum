@@ -190,12 +190,14 @@ namespace Excellcube
             }
         }
 
+        // https://gram.gs/gramlog/formatting-big-numbers-aa-notation/
         private string ToShortFormAlphabet()
         {
             if(m_Value < 1000) {
                 return m_Value.ToString();
             } else {
-                string[] unitCode = { "", "K", "M", "B", "t", "q", "Q", "s", "S", "o", "n", "d", "U" };
+                // aa notation으로 구현.
+                string[] unitCode = { "", "K", "M", "B", "t", "aa", "ab", "ac", "ad", "ae", "af", "ag", "ah" };
 
                 string valueStr = m_Value.ToString();
                 int valueStrLength = valueStr.Length;
