@@ -17,11 +17,11 @@ public class BigNumExample : MonoBehaviour
         BigNum bigIntInt = largeNumInt;
         m_LargeNumIntText.text = bigIntInt.ToShortForm("ko");
 
-        BigInteger largeNumBigInteger = new BigInteger(1234123412341234.0);
+        decimal largeNumBigInteger = 12341234123412341234.0M;
         BigNum bigIntBigInteger = largeNumBigInteger;
         m_LargeNumBigNumberText.text = bigIntBigInteger.ToShortForm("ko");
 
-        string largeNumStr = "987654321987654321987654321987654321";
+        string largeNumStr = "8765432109876543210987654321";
         BigNum bigIntStr = largeNumStr;
         m_LargeNumStrText.text = bigIntStr.ToShortForm("en");
     }
