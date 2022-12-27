@@ -194,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "string + \uC601\uC5B4 (987654321987654321987654321987654321)"
+  m_Text: "string + \uC601\uC5B4 (8765432109876543210987654321)"
 --- !u!222 &555303667
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -721,7 +721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1939504483}
-  - component: {fileID: 1939504482}
+  - component: {fileID: 1939504484}
   m_Layer: 0
   m_Name: Example
   m_TagString: Untagged
@@ -729,21 +729,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1939504482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1939504481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56754c66b59fe42398c29a4367523f06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_LargeNumIntText: {fileID: 1846852287}
-  m_LargeNumBigNumberText: {fileID: 1753347117}
-  m_LargeNumStrText: {fileID: 555303666}
 --- !u!4 &1939504483
 Transform:
   m_ObjectHideFlags: 0
@@ -759,3 +744,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1939504484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939504481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2875f469e3364874a4cbf1139ce9b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LargeNumIntText: {fileID: 1846852287}
+  m_LargeNumBigNumberText: {fileID: 1753347117}
+  m_LargeNumStrText: {fileID: 555303666}
