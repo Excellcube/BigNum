@@ -1,5 +1,5 @@
 {
-    "name": "Excellcube.BigInt.Example",
+    "name": "Excellcube.BigNum.Example",
     "rootNamespace": "",
     "references": [
         "GUID:cdcd7e1bdefaf4ab9aace24bb2664c4f"

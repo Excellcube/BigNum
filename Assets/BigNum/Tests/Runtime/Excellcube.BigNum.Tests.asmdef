@@ -1,10 +1,10 @@
 {
-    "name": "Excellcube.BigInt.Tests",
+    "name": "Excellcube.BigNum.Tests",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "Excellcube.BigInt"
+        "Excellcube.BigNum"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
