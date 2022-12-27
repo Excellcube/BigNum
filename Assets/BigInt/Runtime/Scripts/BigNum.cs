@@ -4,32 +4,32 @@ using UnityEngine;
 
 
 ///
-/// *** BigInt 사용 시 주의사항 ***
-/// Equals 메서드 사용 시 항상 BigInt가 lhs에 할당이 되어야 한다.
-/// BigInt bigInt(5)와 int value = 5를 비교할 때
-/// Assert.AreEqual(bigInt, 5)는 true지만
-/// Assert.AreEqual(5, bigInt)는 false가 된다.
-/// BigInt의 Equals가 호출되지 않기 때문이다.
+/// *** BigNum 사용 시 주의사항 ***
+/// Equals 메서드 사용 시 항상 BigNum가 lhs에 할당이 되어야 한다.
+/// BigNum bigNum(5)와 int value = 5를 비교할 때
+/// Assert.AreEqual(bigNum, 5)는 true지만
+/// Assert.AreEqual(5, bigNum)는 false가 된다.
+/// BigNum의 Equals가 호출되지 않기 때문이다.
 ///
 
 namespace Excellcube
 {
-    public struct BigInt
+    public struct BigNum
     {
         private BigInteger m_Value;
         public  BigInteger value => m_Value;
 
-        public BigInt(int value)
+        public BigNum(int value)
         {
             m_Value = value;
         }
 
-        public BigInt(long value)
+        public BigNum(long value)
         {
             m_Value = value;
         }
 
-        public BigInt(string value)
+        public BigNum(string value)
         {
             if(!BigInteger.TryParse(value, out m_Value))
             {
@@ -38,84 +38,84 @@ namespace Excellcube
             }
         }
 
-        public BigInt(BigInteger value)
+        public BigNum(BigInteger value)
         {
             m_Value = value;
         }
 
-        public static implicit operator BigInt(int value)
+        public static implicit operator BigNum(int value)
         {
-            return new BigInt(value);
+            return new BigNum(value);
         }
 
-        public static implicit operator BigInt(long value)
+        public static implicit operator BigNum(long value)
         {
-            return new BigInt(value);
+            return new BigNum(value);
         }
 
-        public static implicit operator BigInt(string value)
+        public static implicit operator BigNum(string value)
         {
-            return new BigInt(value);
+            return new BigNum(value);
         }
 
 
-        //// BigInt operators
+        //// BigNum operators
 
-        public static implicit operator BigInt(BigInteger value)
+        public static implicit operator BigNum(BigInteger value)
         {
-            return new BigInt(value);
+            return new BigNum(value);
         }
 
-        public static BigInt operator +(BigInt lhs, BigInt rhs)
+        public static BigNum operator +(BigNum lhs, BigNum rhs)
         {
             lhs.m_Value += rhs.m_Value;
             return lhs;
         }
 
-        public static BigInt operator -(BigInt lhs, BigInt rhs)
+        public static BigNum operator -(BigNum lhs, BigNum rhs)
         {
             lhs.m_Value -= rhs.m_Value;
             return lhs;
         }
 
-        public static BigInt operator *(BigInt lhs, BigInt rhs)
+        public static BigNum operator *(BigNum lhs, BigNum rhs)
         {
             lhs.m_Value *= rhs.m_Value;
             return lhs;
         }
 
-        public static BigInt operator /(BigInt lhs, BigInt rhs)
+        public static BigNum operator /(BigNum lhs, BigNum rhs)
         {
             lhs.m_Value /= rhs.m_Value;
             return lhs;
         }
 
-        public static bool operator <(BigInt lhs, BigInt rhs)
+        public static bool operator <(BigNum lhs, BigNum rhs)
         {
             return lhs.m_Value < rhs.m_Value;
         }
 
-        public static bool operator >(BigInt lhs, BigInt rhs)
+        public static bool operator >(BigNum lhs, BigNum rhs)
         {
             return lhs.m_Value > rhs.m_Value;
         }
 
-        public static bool operator <=(BigInt lhs, BigInt rhs)
+        public static bool operator <=(BigNum lhs, BigNum rhs)
         {
             return lhs.m_Value <= rhs.m_Value;
         }
 
-        public static bool operator >=(BigInt lhs, BigInt rhs)
+        public static bool operator >=(BigNum lhs, BigNum rhs)
         {
             return lhs.m_Value >= rhs.m_Value;
         }
 
-        public static bool operator ==(BigInt lhs, BigInt rhs)
+        public static bool operator ==(BigNum lhs, BigNum rhs)
         {
             return lhs.m_Value == rhs.m_Value;
         }
 
-         public static bool operator !=(BigInt lhs, BigInt rhs)
+         public static bool operator !=(BigNum lhs, BigNum rhs)
         {
             return lhs.m_Value != rhs.m_Value;
         }
@@ -123,56 +123,56 @@ namespace Excellcube
 
         //// int operators
 
-        public static BigInt operator +(BigInt lhs, int rhs)
+        public static BigNum operator +(BigNum lhs, int rhs)
         {
             lhs.m_Value += rhs;
             return lhs;
         }
 
-        public static BigInt operator -(BigInt lhs, int rhs)
+        public static BigNum operator -(BigNum lhs, int rhs)
         {
             lhs.m_Value -= rhs;
             return lhs;
         }
 
-        public static BigInt operator *(BigInt lhs, int rhs)
+        public static BigNum operator *(BigNum lhs, int rhs)
         {
             lhs.m_Value *= rhs;
             return lhs;
         }
 
-        public static BigInt operator /(BigInt lhs, int rhs)
+        public static BigNum operator /(BigNum lhs, int rhs)
         {
             lhs.m_Value /= rhs;
             return lhs;
         }
 
-        public static bool operator <(BigInt lhs, int rhs)
+        public static bool operator <(BigNum lhs, int rhs)
         {
             return lhs.m_Value < rhs;
         }
 
-        public static bool operator >(BigInt lhs, int rhs)
+        public static bool operator >(BigNum lhs, int rhs)
         {
             return lhs.m_Value > rhs;
         }
 
-        public static bool operator <=(BigInt lhs, int rhs)
+        public static bool operator <=(BigNum lhs, int rhs)
         {
             return lhs.m_Value <= rhs;
         }
 
-        public static bool operator >=(BigInt lhs, int rhs)
+        public static bool operator >=(BigNum lhs, int rhs)
         {
             return lhs.m_Value >= rhs;
         }
 
-        public static bool operator ==(BigInt lhs, int rhs)
+        public static bool operator ==(BigNum lhs, int rhs)
         {
             return lhs.m_Value == rhs;
         }
 
-        public static bool operator !=(BigInt lhs, int rhs)
+        public static bool operator !=(BigNum lhs, int rhs)
         {
             return lhs.m_Value != rhs;
         }
@@ -180,56 +180,56 @@ namespace Excellcube
 
         ///// long
 
-        public static BigInt operator +(BigInt lhs, long rhs)
+        public static BigNum operator +(BigNum lhs, long rhs)
         {
             lhs.m_Value += rhs;
             return lhs;
         }
 
-        public static BigInt operator -(BigInt lhs, long rhs)
+        public static BigNum operator -(BigNum lhs, long rhs)
         {
             lhs.m_Value -= rhs;
             return lhs;
         }
 
-        public static BigInt operator *(BigInt lhs, long rhs)
+        public static BigNum operator *(BigNum lhs, long rhs)
         {
             lhs.m_Value *= rhs;
             return lhs;
         }
 
-        public static BigInt operator /(BigInt lhs, long rhs)
+        public static BigNum operator /(BigNum lhs, long rhs)
         {
             lhs.m_Value /= rhs;
             return lhs;
         }
 
-        public static bool operator <(BigInt lhs, long rhs)
+        public static bool operator <(BigNum lhs, long rhs)
         {
             return lhs.m_Value < rhs;
         }
 
-        public static bool operator >(BigInt lhs, long rhs)
+        public static bool operator >(BigNum lhs, long rhs)
         {
             return lhs.m_Value > rhs;
         }
 
-        public static bool operator <=(BigInt lhs, long rhs)
+        public static bool operator <=(BigNum lhs, long rhs)
         {
             return lhs.m_Value <= rhs;
         }
 
-        public static bool operator >=(BigInt lhs, long rhs)
+        public static bool operator >=(BigNum lhs, long rhs)
         {
             return lhs.m_Value >= rhs;
         }
 
-        public static bool operator ==(BigInt lhs, long rhs)
+        public static bool operator ==(BigNum lhs, long rhs)
         {
             return lhs.m_Value == rhs;
         }
 
-        public static bool operator !=(BigInt lhs, long rhs)
+        public static bool operator !=(BigNum lhs, long rhs)
         {
             return lhs.m_Value != rhs;
         }
@@ -237,63 +237,63 @@ namespace Excellcube
 
         ///// string
 
-        public static BigInt operator +(BigInt lhs, string rhs)
+        public static BigNum operator +(BigNum lhs, string rhs)
         {
             lhs.m_Value += BigInteger.Parse(rhs);
             return lhs;
         }
 
-        public static BigInt operator -(BigInt lhs, string rhs)
+        public static BigNum operator -(BigNum lhs, string rhs)
         {
             lhs.m_Value -= BigInteger.Parse(rhs);
             return lhs;
         }
 
-        public static BigInt operator *(BigInt lhs, string rhs)
+        public static BigNum operator *(BigNum lhs, string rhs)
         {
             lhs.m_Value *= BigInteger.Parse(rhs);
             return lhs;
         }
 
-        public static BigInt operator /(BigInt lhs, string rhs)
+        public static BigNum operator /(BigNum lhs, string rhs)
         {
             lhs.m_Value /= BigInteger.Parse(rhs);
             return lhs;
         }
 
-        public static bool operator <(BigInt lhs, string rhs)
+        public static bool operator <(BigNum lhs, string rhs)
         {
             return lhs.m_Value < BigInteger.Parse(rhs);
         }
 
-        public static bool operator >(BigInt lhs, string rhs)
+        public static bool operator >(BigNum lhs, string rhs)
         {
             return lhs.m_Value > BigInteger.Parse(rhs);
         }
 
-        public static bool operator <=(BigInt lhs, string rhs)
+        public static bool operator <=(BigNum lhs, string rhs)
         {
             return lhs.m_Value <= BigInteger.Parse(rhs);
         }
 
-        public static bool operator >=(BigInt lhs, string rhs)
+        public static bool operator >=(BigNum lhs, string rhs)
         {
             return lhs.m_Value >= BigInteger.Parse(rhs);
         }
 
-        public static bool operator ==(BigInt lhs, string rhs)
+        public static bool operator ==(BigNum lhs, string rhs)
         {
             return lhs.m_Value == BigInteger.Parse(rhs);
         }
 
-        public static bool operator !=(BigInt lhs, string rhs)
+        public static bool operator !=(BigNum lhs, string rhs)
         {
             return lhs.m_Value != BigInteger.Parse(rhs);
         }
 
 
         // 소수점 셋째자리까지의 나눗셈 결과를 리턴.
-        public static double Divide(BigInt lhs, BigInt rhs)
+        public static double Divide(BigNum lhs, BigNum rhs)
         {
             // BigInterger의 경우 일반 나눗셈을 수행하면 소수점 이하 단위를 표현할 수 없다.
             // 소수점 이하 단위를 계산하기 위해 아래 방식을 사용.
@@ -301,13 +301,13 @@ namespace Excellcube
             // (변경 방법) 24600 / 200 = 123
             //           123 / 100 = 1.23
             
-            BigInt lhs1000 = lhs * 1000;
-            BigInt quot1000 = lhs1000 / rhs;
+            BigNum lhs1000 = lhs * 1000;
+            BigNum quot1000 = lhs1000 / rhs;
             return ((double) quot1000.value) / 1000.0;
         }
 
         // 주로 rhs에 1,000,000 이하의 작은 숫자가 들어간다.
-        public static BigInt Divide(BigInt lhs, float rhs)
+        public static BigNum Divide(BigNum lhs, float rhs)
         {
             // BigInterger의 경우 일반 나눗셈을 수행하면 소수점 이하 단위를 표현할 수 없다.
             // 소수점 이하 단위를 계산하기 위해 아래 방식을 사용.
@@ -315,15 +315,15 @@ namespace Excellcube
             // (변경 방법) 24600 / 200 = 123
             //           123 / 100 = 1.23
             
-            BigInt lhs1000000 = lhs * 1000000;
-            BigInt rhs1000 = (long) (rhs * 1000);
-            BigInt quot1000 = lhs1000000.value / rhs1000;
+            BigNum lhs1000000 = lhs * 1000000;
+            BigNum rhs1000 = (long) (rhs * 1000);
+            BigNum quot1000 = lhs1000000.value / rhs1000;
             return quot1000 / 1000;
         }
 
-        public static BigInt Multiply(BigInt lhs, float rhs)
+        public static BigNum Multiply(BigNum lhs, float rhs)
         {
-            BigInt rhs1000 = (long) (rhs * 1000);
+            BigNum rhs1000 = (long) (rhs * 1000);
             return (lhs.value * rhs1000) / 1000;
         }
 
@@ -456,9 +456,9 @@ namespace Excellcube
             {
                 return this == (string) obj;
             }
-            else if(type == typeof(BigInt))
+            else if(type == typeof(BigNum))
             {
-                return this == (BigInt) obj;
+                return this == (BigNum) obj;
             }
             else
             {

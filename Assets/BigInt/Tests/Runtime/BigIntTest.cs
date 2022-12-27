@@ -7,64 +7,64 @@ using System.Numerics;
 
 using Excellcube;
 
-public class BigIntTest
+public class BigNumTest
 {
     [Test]
     public void AdditionTest()
     {
-        BigInt num1 = 10;
-        BigInt num2 = 20;
+        BigNum num1 = 10;
+        BigNum num2 = 20;
         Assert.IsTrue(num1 + num2 == 30);
     }
 
     [Test]
     public void SubstractTest()
     {
-        BigInt num1 = 10;
-        BigInt num2 = 20;
+        BigNum num1 = 10;
+        BigNum num2 = 20;
         Assert.IsTrue(num1 - num2 == -10);
     }
 
     [Test]
     public void MultiplicationTest()
     {
-        BigInt num1 = 10;
-        BigInt num2 = 20;
+        BigNum num1 = 10;
+        BigNum num2 = 20;
         Assert.IsTrue(num1 * num2 == 200);
     }
 
     [Test]
     public void DivisionTest()
     {
-        BigInt num1 = 20;
-        BigInt num2 = 10;
+        BigNum num1 = 20;
+        BigNum num2 = 10;
         Assert.IsTrue(num1 / num2 == 2);
 
-        BigInt num3 = 3;
-        BigInt num4 = 2;
+        BigNum num3 = 3;
+        BigNum num4 = 2;
         Assert.IsTrue(num3 / num4 == 1);
 
-        BigInt num5 = 1;
-        BigInt num6 = 2;
+        BigNum num5 = 1;
+        BigNum num6 = 2;
         Assert.IsTrue(num5 / num6 == 0);
     }
 
     [Test]
     public void LargeNumberAdditionTest()
     {
-        BigInt num1 = "1000000000000000000000000000";
-        BigInt num2 = "2000000000000000000000000000";
+        BigNum num1 = "1000000000000000000000000000";
+        BigNum num2 = "2000000000000000000000000000";
         Assert.IsTrue(num1 + num2 == "3000000000000000000000000000");
     }
 
     [Test]
     public void ToStringTest()
     {
-        BigInt num1 = "123456789";
+        BigNum num1 = "123456789";
         string num1Str = num1.ToString("N0");
         Assert.AreEqual(num1Str, "123,456,789");
 
-        BigInt num2 = "123456789123456789";
+        BigNum num2 = "123456789123456789";
         string num2Str = num2.ToString("N0");
         Assert.AreEqual(num2Str, "123,456,789,123,456,789");
     }
@@ -72,7 +72,7 @@ public class BigIntTest
     [Test]
     public void ToShortFormKoeanTest()
     {
-        BigInt num;
+        BigNum num;
         string numStr;
 
         num = "1234";
@@ -105,7 +105,7 @@ public class BigIntTest
 
         //    해   경   조    억    만   
         // 8765,4321,2345,6789,8765,4321
-        BigInt num2 = "876543212345678987654321";
+        BigNum num2 = "876543212345678987654321";
         string num2Str = num2.ToShortForm("ko");
         Assert.AreEqual(num2Str, "8765해 4321경");
     }
@@ -113,7 +113,7 @@ public class BigIntTest
     [Test]
     public void ToShortFormAlphabetTest()
     {
-        BigInt num;
+        BigNum num;
         string numStr;
 
         num = "123";
@@ -148,7 +148,7 @@ public class BigIntTest
         numStr = num.ToShortForm("en");
         Assert.AreEqual(numStr, "1.020t");
 
-        BigInt num2 = "876543212345678987654321";
+        BigNum num2 = "876543212345678987654321";
         string num2Str = num2.ToShortForm("en");
         Assert.AreEqual(num2Str, "876.543ac");
     }
@@ -156,7 +156,7 @@ public class BigIntTest
     [Test]
     public void EqualityTest()
     {
-        BigInt num = 10;
+        BigNum num = 10;
         Assert.IsTrue(num == 10);
         Assert.IsFalse(num == 20);
     }
