@@ -16,8 +16,8 @@ namespace Excellcube
 {
     public struct BigNum
     {
-        private BigInteger m_Value;
-        public  BigInteger value => m_Value;
+        private Decimal m_Value;
+        public  Decimal value => m_Value;
 
         public BigNum(int value)
         {
@@ -31,14 +31,14 @@ namespace Excellcube
 
         public BigNum(string value)
         {
-            if(!BigInteger.TryParse(value, out m_Value))
+            if(!Decimal.TryParse(value, out m_Value))
             {
-                Debug.LogWarning($"[BigInt] {value}를 BigInt로 변환하는데 실패했습니다.");
+                Debug.LogWarning($"[BigInt] {value}를 BigNum으로 변환하는데 실패했습니다.");
                 m_Value = 0;
             }
         }
 
-        public BigNum(BigInteger value)
+        public BigNum(Decimal value)
         {
             m_Value = value;
         }
@@ -61,7 +61,7 @@ namespace Excellcube
 
         //// BigNum operators
 
-        public static implicit operator BigNum(BigInteger value)
+        public static implicit operator BigNum(Decimal value)
         {
             return new BigNum(value);
         }
@@ -235,97 +235,211 @@ namespace Excellcube
         }
 
 
+        ///// float
+
+        public static BigNum operator +(BigNum lhs, float rhs)
+        {
+            lhs.m_Value += (decimal) rhs;
+            return lhs;
+        }
+
+        public static BigNum operator -(BigNum lhs, float rhs)
+        {
+            lhs.m_Value -= (decimal) rhs;
+            return lhs;
+        }
+
+        public static BigNum operator *(BigNum lhs, float rhs)
+        {
+            lhs.m_Value *= (decimal) rhs;
+            return lhs;
+        }
+
+        public static BigNum operator /(BigNum lhs, float rhs)
+        {
+            lhs.m_Value /= (decimal) rhs;
+            return lhs;
+        }
+
+        public static bool operator <(BigNum lhs, float rhs)
+        {
+            return lhs.m_Value < (decimal) rhs;
+        }
+
+        public static bool operator >(BigNum lhs, float rhs)
+        {
+            return lhs.m_Value > (decimal) rhs;
+        }
+
+        public static bool operator <=(BigNum lhs, float rhs)
+        {
+            return lhs.m_Value <= (decimal) rhs;
+        }
+
+        public static bool operator >=(BigNum lhs, float rhs)
+        {
+            return lhs.m_Value >= (decimal) rhs;
+        }
+
+        public static bool operator ==(BigNum lhs, float rhs)
+        {
+            return lhs.m_Value == (decimal) rhs;
+        }
+
+        public static bool operator !=(BigNum lhs, float rhs)
+        {
+            return lhs.m_Value != (decimal) rhs;
+        }
+
+
+        ///// double
+
+        public static BigNum operator +(BigNum lhs, double rhs)
+        {
+            lhs.m_Value += (decimal) rhs;
+            return lhs;
+        }
+
+        public static BigNum operator -(BigNum lhs, double rhs)
+        {
+            lhs.m_Value -= (decimal) rhs;
+            return lhs;
+        }
+
+        public static BigNum operator *(BigNum lhs, double rhs)
+        {
+            lhs.m_Value *= (decimal) rhs;
+            return lhs;
+        }
+
+        public static BigNum operator /(BigNum lhs, double rhs)
+        {
+            lhs.m_Value /= (decimal) rhs;
+            return lhs;
+        }
+
+        public static bool operator <(BigNum lhs, double rhs)
+        {
+            return lhs.m_Value < (decimal) rhs;
+        }
+
+        public static bool operator >(BigNum lhs, double rhs)
+        {
+            return lhs.m_Value > (decimal) rhs;
+        }
+
+        public static bool operator <=(BigNum lhs, double rhs)
+        {
+            return lhs.m_Value <= (decimal) rhs;
+        }
+
+        public static bool operator >=(BigNum lhs, double rhs)
+        {
+            return lhs.m_Value >= (decimal) rhs;
+        }
+
+        public static bool operator ==(BigNum lhs, double rhs)
+        {
+            return lhs.m_Value == (decimal) rhs;
+        }
+
+        public static bool operator !=(BigNum lhs, double rhs)
+        {
+            return lhs.m_Value != (decimal) rhs;
+        }
+
+
         ///// string
 
         public static BigNum operator +(BigNum lhs, string rhs)
         {
-            lhs.m_Value += BigInteger.Parse(rhs);
+            lhs.m_Value += Decimal.Parse(rhs);
             return lhs;
         }
 
         public static BigNum operator -(BigNum lhs, string rhs)
         {
-            lhs.m_Value -= BigInteger.Parse(rhs);
+            lhs.m_Value -= Decimal.Parse(rhs);
             return lhs;
         }
 
         public static BigNum operator *(BigNum lhs, string rhs)
         {
-            lhs.m_Value *= BigInteger.Parse(rhs);
+            lhs.m_Value *= Decimal.Parse(rhs);
             return lhs;
         }
 
         public static BigNum operator /(BigNum lhs, string rhs)
         {
-            lhs.m_Value /= BigInteger.Parse(rhs);
+            lhs.m_Value /= Decimal.Parse(rhs);
             return lhs;
         }
 
         public static bool operator <(BigNum lhs, string rhs)
         {
-            return lhs.m_Value < BigInteger.Parse(rhs);
+            return lhs.m_Value < Decimal.Parse(rhs);
         }
 
         public static bool operator >(BigNum lhs, string rhs)
         {
-            return lhs.m_Value > BigInteger.Parse(rhs);
+            return lhs.m_Value > Decimal.Parse(rhs);
         }
 
         public static bool operator <=(BigNum lhs, string rhs)
         {
-            return lhs.m_Value <= BigInteger.Parse(rhs);
+            return lhs.m_Value <= Decimal.Parse(rhs);
         }
 
         public static bool operator >=(BigNum lhs, string rhs)
         {
-            return lhs.m_Value >= BigInteger.Parse(rhs);
+            return lhs.m_Value >= Decimal.Parse(rhs);
         }
 
         public static bool operator ==(BigNum lhs, string rhs)
         {
-            return lhs.m_Value == BigInteger.Parse(rhs);
+            return lhs.m_Value == Decimal.Parse(rhs);
         }
 
         public static bool operator !=(BigNum lhs, string rhs)
         {
-            return lhs.m_Value != BigInteger.Parse(rhs);
+            return lhs.m_Value != Decimal.Parse(rhs);
         }
 
 
-        // 소수점 셋째자리까지의 나눗셈 결과를 리턴.
-        public static double Divide(BigNum lhs, BigNum rhs)
-        {
-            // BigInterger의 경우 일반 나눗셈을 수행하면 소수점 이하 단위를 표현할 수 없다.
-            // 소수점 이하 단위를 계산하기 위해 아래 방식을 사용.
-            // (기존 방법) 246 / 200 = 1.23
-            // (변경 방법) 24600 / 200 = 123
-            //           123 / 100 = 1.23
+        // // 소수점 셋째자리까지의 나눗셈 결과를 리턴.
+        // public static double Divide(BigNum lhs, BigNum rhs)
+        // {
+        //     // BigInterger의 경우 일반 나눗셈을 수행하면 소수점 이하 단위를 표현할 수 없다.
+        //     // 소수점 이하 단위를 계산하기 위해 아래 방식을 사용.
+        //     // (기존 방법) 246 / 200 = 1.23
+        //     // (변경 방법) 24600 / 200 = 123
+        //     //           123 / 100 = 1.23
             
-            BigNum lhs1000 = lhs * 1000;
-            BigNum quot1000 = lhs1000 / rhs;
-            return ((double) quot1000.value) / 1000.0;
-        }
+        //     BigNum lhs1000 = lhs * 1000;
+        //     BigNum quot1000 = lhs1000 / rhs;
+        //     return ((double) quot1000.value) / 1000.0;
+        // }
 
-        // 주로 rhs에 1,000,000 이하의 작은 숫자가 들어간다.
-        public static BigNum Divide(BigNum lhs, float rhs)
-        {
-            // BigInterger의 경우 일반 나눗셈을 수행하면 소수점 이하 단위를 표현할 수 없다.
-            // 소수점 이하 단위를 계산하기 위해 아래 방식을 사용.
-            // (기존 방법) 246 / 200 = 1.23
-            // (변경 방법) 24600 / 200 = 123
-            //           123 / 100 = 1.23
+        // // 주로 rhs에 1,000,000 이하의 작은 숫자가 들어간다.
+        // public static BigNum Divide(BigNum lhs, float rhs)
+        // {
+        //     // BigInterger의 경우 일반 나눗셈을 수행하면 소수점 이하 단위를 표현할 수 없다.
+        //     // 소수점 이하 단위를 계산하기 위해 아래 방식을 사용.
+        //     // (기존 방법) 246 / 200 = 1.23
+        //     // (변경 방법) 24600 / 200 = 123
+        //     //           123 / 100 = 1.23
             
-            BigNum lhs1000000 = lhs * 1000000;
-            BigNum rhs1000 = (long) (rhs * 1000);
-            BigNum quot1000 = lhs1000000.value / rhs1000;
-            return quot1000 / 1000;
-        }
+        //     BigNum lhs1000000 = lhs * 1000000;
+        //     BigNum rhs1000 = (long) (rhs * 1000);
+        //     BigNum quot1000 = lhs1000000.value / rhs1000;
+        //     return quot1000 / 1000;
+        // }
 
-        public static BigNum Multiply(BigNum lhs, float rhs)
-        {
-            BigNum rhs1000 = (long) (rhs * 1000);
-            return (lhs.value * rhs1000) / 1000;
-        }
+        // public static BigNum Multiply(BigNum lhs, float rhs)
+        // {
+        //     BigNum rhs1000 = (long) (rhs * 1000);
+        //     return (lhs.value * rhs1000) / 1000;
+        // }
 
         
         public string ToString(string format = "")
@@ -409,6 +523,7 @@ namespace Excellcube
                 return m_Value.ToString();
             } else {
                 // aa notation으로 구현.
+                // 현재 BigNum은 최대 ae까지 표현 가능.
                 string[] unitCode = { "", "K", "M", "B", "t", "aa", "ab", "ac", "ad", "ae", "af", "ag", "ah" };
 
                 string valueStr = m_Value.ToString();

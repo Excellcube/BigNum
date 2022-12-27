@@ -38,15 +38,15 @@ public class BigNumTest
     {
         BigNum num1 = 20;
         BigNum num2 = 10;
-        Assert.IsTrue(num1 / num2 == 2);
+        Assert.IsTrue(num1 / num2 == 2, $"expected {2}, actual {num1 / num2}");
 
         BigNum num3 = 3;
         BigNum num4 = 2;
-        Assert.IsTrue(num3 / num4 == 1);
+        Assert.IsTrue(num3 / num4 == 1.5f, $"expected {1.5f}, actual {num3 / num4}");
 
         BigNum num5 = 1;
         BigNum num6 = 2;
-        Assert.IsTrue(num5 / num6 == 0);
+        Assert.IsTrue(num5 / num6 == 0.5, $"expected {0.5}, actual {num5 / num6}");
     }
 
     [Test]
@@ -55,6 +55,15 @@ public class BigNumTest
         BigNum num1 = "1000000000000000000000000000";
         BigNum num2 = "2000000000000000000000000000";
         Assert.IsTrue(num1 + num2 == "3000000000000000000000000000");
+    }
+
+    [Test]
+    public void MaxLargeNumberTest()
+    {
+        // 소숫점 표현 때문에 decimal 사용.
+        // 추후에 자릿수 제한이 없는 숫자 모듈로 구현.
+        BigNum num1 = "8765432109876543210987654321"; // 28자리.
+        Assert.IsTrue(num1 == "8765432109876543210987654321");
     }
 
     [Test]
