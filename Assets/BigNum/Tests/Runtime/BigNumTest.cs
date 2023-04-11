@@ -116,7 +116,7 @@ public class BigNumTest
         // 8765,4321,2345,6789,8765,4321
         BigNum num2 = "876543212345678987654321";
         string num2Str = num2.ToShortForm("ko");
-        Assert.AreEqual(num2Str, "8765해 4321경");
+        Assert.AreEqual("8765해 4321경", num2Str);
     }
 
     [Test]
@@ -131,35 +131,35 @@ public class BigNumTest
 
         num = "1234";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "1.234K");
+        Assert.AreEqual(numStr, "1.23K");
 
         num = "123456789";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "123.456M");
+        Assert.AreEqual(numStr, "123M");
 
         num = "1023456789";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "1.023B");
+        Assert.AreEqual(numStr, "1.02B");
 
         num = "10023456789";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "10.023B");
+        Assert.AreEqual(numStr, "10.0B");
 
         num = "100023456789";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "100.023B");
+        Assert.AreEqual(numStr, "100B");
 
         num = "1000023456789";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "1.000t");
+        Assert.AreEqual(numStr, "1.00T");
 
         num = "1020023456789";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "1.020t");
+        Assert.AreEqual(numStr, "1.02T");
 
         BigNum num2 = "876543212345678987654321";
         string num2Str = num2.ToShortForm("en");
-        Assert.AreEqual(num2Str, "876.543ac");
+        Assert.AreEqual(num2Str, "876ac");
     }
 
     [Test]

@@ -16,8 +16,8 @@ namespace Excellcube
 {
     public struct BigNum
     {
-        private Decimal m_Value;
-        public  Decimal value => m_Value;
+        private double m_Value;
+        public  double value => m_Value;
 
         public BigNum(int value)
         {
@@ -29,9 +29,14 @@ namespace Excellcube
             m_Value = value;
         }
 
+        public BigNum(double value)
+        {
+            m_Value = value;
+        }
+
         public BigNum(string value)
         {
-            if(!Decimal.TryParse(value, out m_Value))
+            if(!Double.TryParse(value, out m_Value))
             {
                 Debug.LogWarning($"[BigInt] {value}를 BigNum으로 변환하는데 실패했습니다.");
                 m_Value = 0;
@@ -40,7 +45,7 @@ namespace Excellcube
 
         public BigNum(Decimal value)
         {
-            m_Value = value;
+            m_Value = (double) value;
         }
 
         public static implicit operator BigNum(int value)
@@ -54,6 +59,11 @@ namespace Excellcube
         }
 
         public static implicit operator BigNum(string value)
+        {
+            return new BigNum(value);
+        }
+
+        public static implicit operator BigNum(double value)
         {
             return new BigNum(value);
         }
@@ -239,56 +249,56 @@ namespace Excellcube
 
         public static BigNum operator +(BigNum lhs, float rhs)
         {
-            lhs.m_Value += (decimal) rhs;
+            lhs.m_Value += (double) rhs;
             return lhs;
         }
 
         public static BigNum operator -(BigNum lhs, float rhs)
         {
-            lhs.m_Value -= (decimal) rhs;
+            lhs.m_Value -= (double) rhs;
             return lhs;
         }
 
         public static BigNum operator *(BigNum lhs, float rhs)
         {
-            lhs.m_Value *= (decimal) rhs;
+            lhs.m_Value *= (double) rhs;
             return lhs;
         }
 
         public static BigNum operator /(BigNum lhs, float rhs)
         {
-            lhs.m_Value /= (decimal) rhs;
+            lhs.m_Value /= (double) rhs;
             return lhs;
         }
 
         public static bool operator <(BigNum lhs, float rhs)
         {
-            return lhs.m_Value < (decimal) rhs;
+            return lhs.m_Value < (double) rhs;
         }
 
         public static bool operator >(BigNum lhs, float rhs)
         {
-            return lhs.m_Value > (decimal) rhs;
+            return lhs.m_Value > (double) rhs;
         }
 
         public static bool operator <=(BigNum lhs, float rhs)
         {
-            return lhs.m_Value <= (decimal) rhs;
+            return lhs.m_Value <= (double) rhs;
         }
 
         public static bool operator >=(BigNum lhs, float rhs)
         {
-            return lhs.m_Value >= (decimal) rhs;
+            return lhs.m_Value >= (double) rhs;
         }
 
         public static bool operator ==(BigNum lhs, float rhs)
         {
-            return lhs.m_Value == (decimal) rhs;
+            return lhs.m_Value == (double) rhs;
         }
 
         public static bool operator !=(BigNum lhs, float rhs)
         {
-            return lhs.m_Value != (decimal) rhs;
+            return lhs.m_Value != (double) rhs;
         }
 
 
@@ -296,56 +306,56 @@ namespace Excellcube
 
         public static BigNum operator +(BigNum lhs, double rhs)
         {
-            lhs.m_Value += (decimal) rhs;
+            lhs.m_Value += rhs;
             return lhs;
         }
 
         public static BigNum operator -(BigNum lhs, double rhs)
         {
-            lhs.m_Value -= (decimal) rhs;
+            lhs.m_Value -= rhs;
             return lhs;
         }
 
         public static BigNum operator *(BigNum lhs, double rhs)
         {
-            lhs.m_Value *= (decimal) rhs;
+            lhs.m_Value *= rhs;
             return lhs;
         }
 
         public static BigNum operator /(BigNum lhs, double rhs)
         {
-            lhs.m_Value /= (decimal) rhs;
+            lhs.m_Value /= rhs;
             return lhs;
         }
 
         public static bool operator <(BigNum lhs, double rhs)
         {
-            return lhs.m_Value < (decimal) rhs;
+            return lhs.m_Value < rhs;
         }
 
         public static bool operator >(BigNum lhs, double rhs)
         {
-            return lhs.m_Value > (decimal) rhs;
+            return lhs.m_Value > rhs;
         }
 
         public static bool operator <=(BigNum lhs, double rhs)
         {
-            return lhs.m_Value <= (decimal) rhs;
+            return lhs.m_Value <= rhs;
         }
 
         public static bool operator >=(BigNum lhs, double rhs)
         {
-            return lhs.m_Value >= (decimal) rhs;
+            return lhs.m_Value >= rhs;
         }
 
         public static bool operator ==(BigNum lhs, double rhs)
         {
-            return lhs.m_Value == (decimal) rhs;
+            return lhs.m_Value == rhs;
         }
 
         public static bool operator !=(BigNum lhs, double rhs)
         {
-            return lhs.m_Value != (decimal) rhs;
+            return lhs.m_Value != rhs;
         }
 
 
@@ -353,101 +363,127 @@ namespace Excellcube
 
         public static BigNum operator +(BigNum lhs, string rhs)
         {
-            lhs.m_Value += Decimal.Parse(rhs);
+            lhs.m_Value += Double.Parse(rhs);
             return lhs;
         }
 
         public static BigNum operator -(BigNum lhs, string rhs)
         {
-            lhs.m_Value -= Decimal.Parse(rhs);
+            lhs.m_Value -= Double.Parse(rhs);
             return lhs;
         }
 
         public static BigNum operator *(BigNum lhs, string rhs)
         {
-            lhs.m_Value *= Decimal.Parse(rhs);
+            lhs.m_Value *= Double.Parse(rhs);
             return lhs;
         }
 
         public static BigNum operator /(BigNum lhs, string rhs)
         {
-            lhs.m_Value /= Decimal.Parse(rhs);
+            lhs.m_Value /= Double.Parse(rhs);
             return lhs;
         }
 
         public static bool operator <(BigNum lhs, string rhs)
         {
-            return lhs.m_Value < Decimal.Parse(rhs);
+            return lhs.m_Value < Double.Parse(rhs);
         }
 
         public static bool operator >(BigNum lhs, string rhs)
         {
-            return lhs.m_Value > Decimal.Parse(rhs);
+            return lhs.m_Value > Double.Parse(rhs);
         }
 
         public static bool operator <=(BigNum lhs, string rhs)
         {
-            return lhs.m_Value <= Decimal.Parse(rhs);
+            return lhs.m_Value <= Double.Parse(rhs);
         }
 
         public static bool operator >=(BigNum lhs, string rhs)
         {
-            return lhs.m_Value >= Decimal.Parse(rhs);
+            return lhs.m_Value >= Double.Parse(rhs);
         }
 
         public static bool operator ==(BigNum lhs, string rhs)
         {
-            return lhs.m_Value == Decimal.Parse(rhs);
+            return lhs.m_Value == Double.Parse(rhs);
         }
 
         public static bool operator !=(BigNum lhs, string rhs)
         {
-            return lhs.m_Value != Decimal.Parse(rhs);
+            return lhs.m_Value != Double.Parse(rhs);
         }
 
+        public static BigNum Pow(BigNum num, int p) 
+        {
+            return BigNum.Pow(num, (double) p);
+        }
 
-        // // 소수점 셋째자리까지의 나눗셈 결과를 리턴.
-        // public static double Divide(BigNum lhs, BigNum rhs)
-        // {
-        //     // BigInterger의 경우 일반 나눗셈을 수행하면 소수점 이하 단위를 표현할 수 없다.
-        //     // 소수점 이하 단위를 계산하기 위해 아래 방식을 사용.
-        //     // (기존 방법) 246 / 200 = 1.23
-        //     // (변경 방법) 24600 / 200 = 123
-        //     //           123 / 100 = 1.23
-            
-        //     BigNum lhs1000 = lhs * 1000;
-        //     BigNum quot1000 = lhs1000 / rhs;
-        //     return ((double) quot1000.value) / 1000.0;
-        // }
+        public static BigNum Pow(BigNum num, long p)
+        {
+            return BigNum.Pow(num, (double) p);
+        }
 
-        // // 주로 rhs에 1,000,000 이하의 작은 숫자가 들어간다.
-        // public static BigNum Divide(BigNum lhs, float rhs)
-        // {
-        //     // BigInterger의 경우 일반 나눗셈을 수행하면 소수점 이하 단위를 표현할 수 없다.
-        //     // 소수점 이하 단위를 계산하기 위해 아래 방식을 사용.
-        //     // (기존 방법) 246 / 200 = 1.23
-        //     // (변경 방법) 24600 / 200 = 123
-        //     //           123 / 100 = 1.23
-            
-        //     BigNum lhs1000000 = lhs * 1000000;
-        //     BigNum rhs1000 = (long) (rhs * 1000);
-        //     BigNum quot1000 = lhs1000000.value / rhs1000;
-        //     return quot1000 / 1000;
-        // }
+        public static BigNum Pow(BigNum num, float p)
+        {
+            return BigNum.Pow(num, (double) p);
+        }
 
-        // public static BigNum Multiply(BigNum lhs, float rhs)
-        // {
-        //     BigNum rhs1000 = (long) (rhs * 1000);
-        //     return (lhs.value * rhs1000) / 1000;
-        // }
+        // double 기반의 pow 사용. 숫자가 커지면 낮은 자리수에 대한 정확도가 떨어질 수 있음.
+        public static BigNum Pow(BigNum num, double p)
+        {
+            double value = num.value;
+            double res = Math.Pow((double) value, (double) p);
+            return new BigNum(res);
+        }
 
+        public static BigNum Round(BigNum num) {
+            double value = Math.Round((double) num.value);
+            return new BigNum(value);
+        }
+
+        public static BigNum Round(BigNum num, int digits) {
+            double value = Math.Round((double) num.value, digits);
+            return new BigNum(value);
+        }
+
+        public static BigNum Ceiling(BigNum num) {
+            double value = Math.Ceiling((double) num.value);
+            return new BigNum(value);
+        }
+
+        public static BigNum Floor(BigNum num) {
+            double value = Math.Floor((double) num.value);
+            return new BigNum(value);
+        }
+
+        public int ToInt()
+        {
+            return (int) m_Value;
+        }
+
+        public long ToLong()
+        {
+            return (long) m_Value;
+        }
+
+        public float ToFloat()
+        {
+            return (float) m_Value;
+        }
+
+        public double ToDouble()
+        {
+            return (double) m_Value;
+        }
         
         public string ToString(string format = "")
         {
             return m_Value.ToString(format);
         }
 
-        public string ToShortForm(string locale)
+        public string ToShortForm(string locale = "en")
         {
             if(IsUsingKorean(locale))
             {
@@ -466,12 +502,13 @@ namespace Excellcube
 
         private string ToShortFormKorean()
         {
-            if(m_Value < 10000) {
-                return m_Value.ToString();
+            var value = Round(m_Value);
+            if(value < 10000) {
+                return value.ToString();
             } else {
                 string[] unitCode = { "", "만", "억", "조", "경", "해", "자", "양", "구", "간", "정", "재", "극" };
 
-                string valueStr = m_Value.ToString();
+                string valueStr = value.ToString("F99").TrimEnd('0').TrimEnd('.');
                 int valueStrLength = valueStr.Length;
 
                 int majorCodeIdx = (valueStrLength - 1) / 4;
@@ -519,14 +556,15 @@ namespace Excellcube
         // https://gram.gs/gramlog/formatting-big-numbers-aa-notation/
         private string ToShortFormAlphabet()
         {
-            if(m_Value < 1000) {
-                return m_Value.ToString();
+            var value = Round(m_Value);
+            if(value < 1000) {
+                return value.ToString();
             } else {
                 // aa notation으로 구현.
                 // 현재 BigNum은 최대 ae까지 표현 가능.
-                string[] unitCode = { "", "K", "M", "B", "t", "aa", "ab", "ac", "ad", "ae", "af", "ag", "ah" };
+                string[] unitCode = { "", "K", "M", "B", "T", "aa", "ab", "ac", "ad", "ae", "af", "ag", "ah" };
 
-                string valueStr = m_Value.ToString();
+                string valueStr = value.ToString("F0");
                 int valueStrLength = valueStr.Length;
 
                 int majorCodeIdx = (valueStrLength - 1) / 3;
@@ -537,7 +575,8 @@ namespace Excellcube
                 {
                     majorValueCount = 3;
                 }
-                int minorValueCount = 3;
+                
+                int minorValueCount = 3 - majorValueCount;
 
                 if(valueStrLength < 4)
                 {
@@ -549,10 +588,19 @@ namespace Excellcube
                     string majorCode = unitCode[majorCodeIdx];
                     string minorValue = valueStr.Substring(majorValueCount, minorValueCount);
                     string minorCode = unitCode[minorCodeIdx];
-
-                    return $"{majorValue}.{minorValue}{majorCode}";
+                    
+                    if(minorValueCount > 0) {
+                        return $"{majorValue}.{minorValue}{majorCode}";
+                    } else {
+                        return $"{majorValue}{majorCode}";
+                    }
                 }                
             }
+        }
+
+        public static BigNum GetMaxNum()
+        {
+            return decimal.MaxValue;
         }
 
         public override bool Equals(object obj)
