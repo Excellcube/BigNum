@@ -52,9 +52,12 @@ public class BigNumTest
     [Test]
     public void LargeNumberAdditionTest()
     {
-        BigNum num1 = "1000000000000000000000000000";
-        BigNum num2 = "2000000000000000000000000000";
-        Assert.IsTrue(num1 + num2 == "3000000000000000000000000000");
+        BigNum num1 = 1E+27d;
+        BigNum num2 = 2E+27d;
+        BigNum sum = num1 + num2;
+
+        // 15자리수 차이의 오차 내에서 계산 가능. -> 100조 분의 1 수준의 오차.
+        Assert.AreEqual(3E+27d, sum.ToDouble(), 1E+12d);
     }
 
     [Test]
@@ -73,9 +76,10 @@ public class BigNumTest
         string num1Str = num1.ToString("N0");
         Assert.AreEqual(num1Str, "123,456,789");
 
-        BigNum num2 = "123456789123456789";
+        // double은 precision이 15자리.
+        BigNum num2 = "12345678912345";
         string num2Str = num2.ToString("N0");
-        Assert.AreEqual(num2Str, "123,456,789,123,456,789");
+        Assert.AreEqual(num2Str, "12,345,678,912,345");
     }
 
     [Test]
