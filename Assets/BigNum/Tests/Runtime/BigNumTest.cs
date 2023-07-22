@@ -52,9 +52,12 @@ public class BigNumTest
     [Test]
     public void LargeNumberAdditionTest()
     {
-        BigNum num1 = "1000000000000000000000000000";
-        BigNum num2 = "2000000000000000000000000000";
-        Assert.IsTrue(num1 + num2 == "3000000000000000000000000000");
+        BigNum num1 = 1E+27d;
+        BigNum num2 = 2E+27d;
+        BigNum sum = num1 + num2;
+
+        // 15자리수 차이의 오차 내에서 계산 가능. -> 100조 분의 1 수준의 오차.
+        Assert.AreEqual(3E+27d, sum.ToDouble(), 1E+12d);
     }
 
     [Test]
@@ -73,9 +76,10 @@ public class BigNumTest
         string num1Str = num1.ToString("N0");
         Assert.AreEqual(num1Str, "123,456,789");
 
-        BigNum num2 = "123456789123456789";
+        // double은 precision이 15자리.
+        BigNum num2 = "12345678912345";
         string num2Str = num2.ToString("N0");
-        Assert.AreEqual(num2Str, "123,456,789,123,456,789");
+        Assert.AreEqual(num2Str, "12,345,678,912,345");
     }
 
     [Test]
@@ -116,7 +120,7 @@ public class BigNumTest
         // 8765,4321,2345,6789,8765,4321
         BigNum num2 = "876543212345678987654321";
         string num2Str = num2.ToShortForm("ko");
-        Assert.AreEqual(num2Str, "8765해 4321경");
+        Assert.AreEqual("8765해 4321경", num2Str);
     }
 
     [Test]
@@ -131,35 +135,35 @@ public class BigNumTest
 
         num = "1234";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "1.234K");
+        Assert.AreEqual(numStr, "1.23K");
 
         num = "123456789";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "123.456M");
+        Assert.AreEqual(numStr, "123M");
 
         num = "1023456789";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "1.023B");
+        Assert.AreEqual(numStr, "1.02B");
 
         num = "10023456789";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "10.023B");
+        Assert.AreEqual(numStr, "10.0B");
 
         num = "100023456789";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "100.023B");
+        Assert.AreEqual(numStr, "100B");
 
         num = "1000023456789";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "1.000t");
+        Assert.AreEqual(numStr, "1.00T");
 
         num = "1020023456789";
         numStr = num.ToShortForm("en");
-        Assert.AreEqual(numStr, "1.020t");
+        Assert.AreEqual(numStr, "1.02T");
 
         BigNum num2 = "876543212345678987654321";
         string num2Str = num2.ToShortForm("en");
-        Assert.AreEqual(num2Str, "876.543ac");
+        Assert.AreEqual(num2Str, "876ac");
     }
 
     [Test]
