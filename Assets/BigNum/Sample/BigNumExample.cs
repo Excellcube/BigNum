@@ -17,7 +17,7 @@ public class BigNumExample : MonoBehaviour
         BigNum bigIntInt = largeNumInt;
         m_LargeNumIntText.text = bigIntInt.ToShortForm("ko");
 
-        decimal largeNumBigInteger = 12341234123412341234.0M;
+        decimal largeNumBigInteger = 4321987654321987654321.0M;
         BigNum bigIntBigInteger = largeNumBigInteger;
         m_LargeNumBigNumberText.text = bigIntBigInteger.ToShortForm("ko");
 
