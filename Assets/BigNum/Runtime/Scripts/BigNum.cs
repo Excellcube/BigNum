@@ -510,7 +510,7 @@ namespace Excellcube
             } else {
                 string[] unitCode = { "", "만", "억", "조", "경", "해", "자", "양", "구", "간", "정", "재", "극" };
 
-                string valueStr = value.ToString();
+                string valueStr = value.ToString("F99").TrimEnd('0').TrimEnd('.');
                 int valueStrLength = valueStr.Length;
 
                 int majorCodeIdx = (valueStrLength - 1) / 4;
