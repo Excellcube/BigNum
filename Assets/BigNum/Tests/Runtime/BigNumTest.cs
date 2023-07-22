@@ -18,6 +18,15 @@ public class BigNumTest
     }
 
     [Test]
+    public void AdditionChainTest()
+    {
+        BigNum num1 = 100000;
+        int a = 123;
+        double b = 45.6;
+        Assert.IsTrue(num1 + a + b == 100168.6);
+    }
+
+    [Test]
     public void SubstractTest()
     {
         BigNum num1 = 10;
