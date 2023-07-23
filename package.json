@@ -1,0 +1,17 @@
+{
+    "name": "com.excellcube.bignum",
+    "displayName": "BigNum",
+    "description": "큰 수의 축약형 표기를 도와주는 패키지",
+    "version": "1.0.0",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Excellcube/BigNum.git"
+    },
+    "src": "",
+    "author": {
+        "name" : "quve",
+        "email" : "excellcube20@gmail.com",
+        "utl" : "https://github.com/Excellcube/"
+    }
+}
